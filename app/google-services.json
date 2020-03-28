@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "804637067727",
+    "firebase_url": "https://recipelyapp.firebaseio.com",
+    "project_id": "recipelyapp",
+    "storage_bucket": "recipelyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804637067727:android:f9bf442461428f320e2aba",
+        "android_client_info": {
+          "package_name": "com.mmuhamadamirzaidi.recipelyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "804637067727-e6im8rq1mk49a7s8jqf92ucuuqr5bbnf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mmuhamadamirzaidi.recipelyapp",
+            "certificate_hash": "2f1959cb05759578ae9430a34b2a8eddf3d01f13"
+          }
+        },
+        {
+          "client_id": "804637067727-r5ojquigskfekia0o4qjjad5b9le4anv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvd0MouPIvAxckyPBiIVaBhABpWNqD6lM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804637067727-r5ojquigskfekia0o4qjjad5b9le4anv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
