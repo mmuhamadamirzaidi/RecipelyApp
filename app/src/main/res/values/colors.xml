@@ -8,8 +8,8 @@
 
     <color name="colorThird">#fce5b5</color>
 
-<!--    //Background-->
-<!--    <color name="backgroundApp">#f4f4f4</color>-->
+    //Background
+    <color name="backgroundApp">#f4f4f4</color>
 
     //Button
     <color name="colorTransparent">#00000000</color>
