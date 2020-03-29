@@ -13,16 +13,14 @@
     </style>
 
     <style name="ToolbarTheme">
-
         <item name="android:fontFamily">@font/mm</item>
-        <item name="android:textColor">@color/white</item>
+    </style>
 
-        <!-- Used to for the title of the toolbar -->
-        <item name="android:textColorPrimary">@color/white</item>
-        <!-- Used to color back button and overflow menu dots -->
-        <item name="android:textColorSecondary">@color/white</item>
-
-        <item name="android:background">@color/colorPrimary</item>
+    <style name="Upload" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Uploading</item>
+        <item name="DialogSpotColor">@color/white</item>
+        <item name="DialogSpotCount">5</item>
     </style>
 
 </resources>

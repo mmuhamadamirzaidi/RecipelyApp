@@ -57,7 +57,8 @@ public class CategoryActivity extends AppCompatActivity {
         category_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Add later
+                Intent menuIntent = new Intent(CategoryActivity.this, AddCategoryActivity.class);
+                startActivity(menuIntent);
             }
         });
 
