@@ -35,7 +35,7 @@ public class CategoryActivity extends AppCompatActivity {
 
     SwipeRefreshLayout swipe_layout_category;
 
-    ImageView category_back, category_add;
+    ImageView category_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,16 @@ public class CategoryActivity extends AppCompatActivity {
         // Init Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         category = database.getReference("Category");
+
+        // Init Resources
+        category_add = findViewById(R.id.category_add);
+
+        category_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // Add later
+            }
+        });
 
         swipe_layout_category.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -104,8 +114,6 @@ public class CategoryActivity extends AppCompatActivity {
                         Intent product_id = new Intent(CategoryActivity.this, RecipeActivity.class);
                         product_id.putExtra("categoryId", adapter.getRef(position).getKey());
                         startActivity(product_id);
-
-//                        Toast.makeText(CategoryActivity.this, "Key: "+adapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -138,5 +146,4 @@ public class CategoryActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
 }

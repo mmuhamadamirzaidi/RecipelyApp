@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -56,6 +57,8 @@ public class RecipeActivity extends AppCompatActivity {
     // Bookmark
     Database bookmarkDB;
 
+    ImageView recipe_add;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +70,16 @@ public class RecipeActivity extends AppCompatActivity {
 
         // Local bookmark database
         bookmarkDB = new Database(this);
+
+        // Init Resources
+        recipe_add = findViewById(R.id.recipe_add);
+
+        recipe_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Add later
+            }
+        });
 
         swipe_layout_recipe_list = (SwipeRefreshLayout) findViewById(R.id.swipe_layout_recipe_list);
         swipe_layout_recipe_list.setColorSchemeResources(R.color.colorPrimaryDark);
@@ -268,8 +281,6 @@ public class RecipeActivity extends AppCompatActivity {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-
-                        Toast.makeText(RecipeActivity.this, "Recipe Name: " + clickItem.getRecipeName(), Toast.LENGTH_SHORT).show();
 
                         Intent recipe_detail = new Intent(RecipeActivity.this, RecipeDetailsActivity.class);
                         recipe_detail.putExtra("recipeId", adapter.getRef(position).getKey());

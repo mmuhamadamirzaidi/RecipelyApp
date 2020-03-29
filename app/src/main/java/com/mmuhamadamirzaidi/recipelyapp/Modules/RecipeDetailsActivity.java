@@ -1,7 +1,9 @@
 package com.mmuhamadamirzaidi.recipelyapp.Modules;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -30,13 +32,9 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
     TextView recipe_details_name, recipe_details_id, recipe_details_serves, recipe_details_ingredients, recipe_details_steps;
 
-    RatingBar detail_rating_bar;
-
     String recipeId="";
 
     Recipe currentRecipe;
-
-    String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +45,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         recipe = database.getReference("Recipe");
 
-        // Init view
+        // Init Resources
         recipe_details_image = (ImageView) findViewById(R.id.recipe_details_image);
 
         recipe_details_name = (TextView) findViewById(R.id.recipe_details_name);
@@ -56,7 +54,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         recipe_details_ingredients = (TextView) findViewById(R.id.recipe_details_ingredients);
         recipe_details_steps = (TextView) findViewById(R.id.recipe_details_steps);
 
-        // Get recipeId intent
+        // Get recipeId Intent
         if (getIntent() != null){
             recipeId = getIntent().getStringExtra("recipeId");
         }
@@ -93,5 +91,11 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
     }
 }
