@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Modules.Category.AddCategoryActivity">
+    tools:context=".Modules.Category.AddCategoryActivity"
+    android:background="@color/backgroundApp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/add_category_app_bar_layout"

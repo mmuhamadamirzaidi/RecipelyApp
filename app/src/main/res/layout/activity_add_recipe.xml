@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Modules.Recipe.AddRecipeActivity"
-    android:id="@+id/activity_add_product">
+    android:id="@+id/activity_add_product"
+    android:background="@color/backgroundApp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/add_recipe_app_bar_layout"

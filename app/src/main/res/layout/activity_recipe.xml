@@ -50,6 +50,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.mancj.materialsearchbar.MaterialSearchBar
+            android:layout_marginTop="8dp"
             android:id="@+id/recipe_list_search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
