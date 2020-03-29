@@ -135,4 +135,21 @@ public class CategoryActivity extends AppCompatActivity {
         recycler_category.setAdapter(adapter);
         swipe_layout_category.setRefreshing(false);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //Fix back button not display Category
+        if (adapter != null){
+            adapter.startListening();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
 }
