@@ -1,7 +1,11 @@
 package com.mmuhamadamirzaidi.recipelyapp.Modules.Recipe;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,19 +14,27 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.mmuhamadamirzaidi.recipelyapp.Common.Common;
 import com.mmuhamadamirzaidi.recipelyapp.Interface.ItemClickListener;
@@ -36,11 +48,19 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
+import dmax.dialog.SpotsDialog;
 
 public class RecipeActivity extends AppCompatActivity {
 
+    Uri saveUri;
+
     FirebaseDatabase database;
     DatabaseReference recipe;
+
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     String categoryId = "";
 
@@ -61,6 +81,15 @@ public class RecipeActivity extends AppCompatActivity {
 
     ImageView recipe_add;
 
+    AlertDialog dialog;
+
+    Dialog updateDialog, updateLoadingDialog;
+
+    EditText update_recipe_name, update_recipe_serves, update_recipe_ingredients, update_recipe_steps;
+    ImageView select_image, update_recipe_image;
+
+    Button button_update, button_cancel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +98,13 @@ public class RecipeActivity extends AppCompatActivity {
         // Init Firebase
         database = FirebaseDatabase.getInstance();
         recipe = database.getReference("Recipe");
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
+        // Custom Dialog
+        updateLoadingDialog = new SpotsDialog.Builder().setContext(RecipeActivity.this).setTheme(R.style.Update).build();
+        dialog = new SpotsDialog.Builder().setContext(RecipeActivity.this).setTheme(R.style.Upload).build();
 
         // Local Bookmark Database
         bookmarkDB = new Database(this);
@@ -123,7 +159,6 @@ public class RecipeActivity extends AppCompatActivity {
                 }
 
                 // Search
-
                 recipe_list_search_bar = (MaterialSearchBar) findViewById(R.id.recipe_list_search_bar);
                 recipe_list_search_bar.setHint("Search the recipes...");
 
@@ -347,6 +382,145 @@ public class RecipeActivity extends AppCompatActivity {
         adapter.stopListening();
         if (searchAdapter != null) {
             searchAdapter.stopListening();
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        if (item.getTitle().equals(Common.UPDATE)) {
+
+            showUpdateDialog(adapter.getRef(item.getOrder()).getKey(), adapter.getItem(item.getOrder()));
+        } else if (item.getTitle().equals(Common.DELETE)) {
+
+            deleteProduct(adapter.getRef(item.getOrder()).getKey());
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
+    private void showUpdateDialog(final String key, final Recipe item) {
+
+        updateDialog = new Dialog(RecipeActivity.this);
+        updateDialog.setCanceledOnTouchOutside(false);
+        updateDialog.setContentView(R.layout.dialog_activity_update_recipe);
+
+        select_image = updateDialog.findViewById(R.id.select_image);
+        update_recipe_image = updateDialog.findViewById(R.id.update_recipe_image);
+
+        update_recipe_name = updateDialog.findViewById(R.id.update_recipe_name);
+        update_recipe_serves = updateDialog.findViewById(R.id.update_recipe_serves);
+        update_recipe_ingredients = updateDialog.findViewById(R.id.update_recipe_ingredients);
+        update_recipe_steps = updateDialog.findViewById(R.id.update_recipe_steps);
+
+        button_update = updateDialog.findViewById(R.id.button_update);
+        button_cancel = updateDialog.findViewById(R.id.button_cancel);
+
+        // Set Original Value
+        update_recipe_name.setText(item.getRecipeName());
+        update_recipe_serves.setText(item.getRecipeServes());
+        update_recipe_ingredients.setText(item.getRecipeIngredients());
+        update_recipe_steps.setText(item.getRecipeSteps());
+
+        select_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addImage();
+            }
+        });
+
+        update_recipe_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadNewImage(item);
+            }
+        });
+
+        button_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                updateLoadingDialog.show();
+                item.setRecipeName(update_recipe_name.getText().toString().trim());
+                item.setRecipeServes(update_recipe_serves.getText().toString().trim());
+                item.setRecipeIngredients(update_recipe_ingredients.getText().toString().trim());
+                item.setRecipeSteps(update_recipe_steps.getText().toString().trim());
+
+                recipe.child(key).setValue(item);
+
+                updateLoadingDialog.dismiss();
+                updateDialog.cancel();
+                Toast.makeText(RecipeActivity.this, item.getRecipeName() + " recipe was updated!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateDialog.cancel();
+            }
+        });
+        updateDialog.show();
+
+    }
+
+    private void uploadNewImage(final Recipe item) {
+        dialog.show();
+
+        if (saveUri != null) {
+
+            String imageName = UUID.randomUUID().toString();
+            final StorageReference imageFolder = storageReference.child("recipes/" + imageName);
+            imageFolder.putFile(saveUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    dialog.dismiss();
+
+                    Toast.makeText(RecipeActivity.this, "Image uploaded!", Toast.LENGTH_SHORT).show();
+                    imageFolder.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            dialog.dismiss();
+
+                            // Update new image info and upload link
+                            item.setRecipeImage(uri.toString());
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    dialog.dismiss();
+
+                    updateDialog.cancel();
+                    Toast.makeText(RecipeActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            dialog.dismiss();
+            Toast.makeText(RecipeActivity.this, "Please select recipe image!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void addImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Image"), Common.PICK_IMAGE_REQUEST);
+
+    }
+
+    private void deleteProduct(String key) {
+        recipe.child(key).removeValue();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Common.PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            saveUri = data.getData();
         }
     }
 }
