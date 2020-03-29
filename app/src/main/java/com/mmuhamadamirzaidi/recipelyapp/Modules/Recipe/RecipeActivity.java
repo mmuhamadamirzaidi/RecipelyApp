@@ -134,6 +134,7 @@ public class RecipeActivity extends AppCompatActivity {
                     if (Common.isConnectedToInternet(getBaseContext())) {
                         loadRecipe(categoryId);
                     } else {
+                        swipe_layout_recipe_list.setRefreshing(false);
                         Toast.makeText(RecipeActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -152,6 +153,7 @@ public class RecipeActivity extends AppCompatActivity {
                     if (Common.isConnectedToInternet(getBaseContext())) {
                         loadRecipe(categoryId);
                     } else {
+                        swipe_layout_recipe_list.setRefreshing(false);
                         Toast.makeText(RecipeActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -377,10 +379,11 @@ public class RecipeActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        adapter.stopListening();
-        if (searchAdapter != null) {
-            searchAdapter.stopListening();
-        }
+//        adapter.stopListening();
+//
+//        if (searchAdapter != null) {
+//            searchAdapter.stopListening();
+//        }
     }
 
     @Override

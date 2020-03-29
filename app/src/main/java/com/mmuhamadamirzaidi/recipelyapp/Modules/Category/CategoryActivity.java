@@ -105,6 +105,7 @@ public class CategoryActivity extends AppCompatActivity {
                     loadCategory();
                 }
                 else{
+                    swipe_layout_category.setRefreshing(false);
                     Toast.makeText(getBaseContext(), "Please check Internet connection!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -118,6 +119,7 @@ public class CategoryActivity extends AppCompatActivity {
                     loadCategory();
                 }
                 else{
+                    swipe_layout_category.setRefreshing(false);
                     Toast.makeText(getBaseContext(), "Please check Internet connection!", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -182,7 +184,7 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        adapter.stopListening();
+//        adapter.stopListening();
     }
 
     @Override
