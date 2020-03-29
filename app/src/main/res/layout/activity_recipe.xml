@@ -51,6 +51,8 @@
 
         <com.mancj.materialsearchbar.MaterialSearchBar
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="@dimen/padding_side"
+            android:layout_marginRight="@dimen/padding_side"
             android:id="@+id/recipe_list_search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
