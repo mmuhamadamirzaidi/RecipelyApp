@@ -4,13 +4,13 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -39,8 +39,6 @@ import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.mmuhamadamirzaidi.recipelyapp.Common.Common;
 import com.mmuhamadamirzaidi.recipelyapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.recipelyapp.Model.Recipe;
-import com.mmuhamadamirzaidi.recipelyapp.Modules.Category.AddCategoryActivity;
-import com.mmuhamadamirzaidi.recipelyapp.Modules.Category.CategoryActivity;
 import com.mmuhamadamirzaidi.recipelyapp.R;
 import com.mmuhamadamirzaidi.recipelyapp.SQLite.Database;
 import com.mmuhamadamirzaidi.recipelyapp.ViewHolder.RecipeViewHolder;
@@ -251,7 +249,7 @@ public class RecipeActivity extends AppCompatActivity {
 
                 viewHolder.recipe_name.setText(model.getRecipeName());
 
-                Picasso.with(getBaseContext()).load(model.getRecipeImage())
+                Picasso.get().load(model.getRecipeImage())
                         .into(viewHolder.recipe_image);
 
                 final Recipe local = model;
@@ -314,7 +312,7 @@ public class RecipeActivity extends AppCompatActivity {
 
                 viewHolder.recipe_name.setText(model.getRecipeName());
 
-                Picasso.with(getBaseContext()).load(model.getRecipeImage()).into(viewHolder.recipe_image);
+                Picasso.get().load(model.getRecipeImage()).into(viewHolder.recipe_image);
 
                 //Add bookmark
                 if (bookmarkDB.currentBookmark(adapter.getRef(position).getKey()))

@@ -4,13 +4,13 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -141,7 +141,7 @@ public class CategoryActivity extends AppCompatActivity {
 
                 viewHolder.category_name.setText(model.getName());
 
-                Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.category_image);
+                Picasso.get().load(model.getImage()).into(viewHolder.category_image);
 
                 final Category clickItem = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {

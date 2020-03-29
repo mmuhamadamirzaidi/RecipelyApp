@@ -6,20 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Modules.AboutActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/about_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:theme="@style/ToolbarTheme"
-            app:titleTextColor="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:titleTextColor="@color/white">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -31,9 +29,9 @@
                 android:theme="@style/ToolbarTheme"
                 android:id="@+id/toolbar_title" />
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_above="@+id/about_version"
@@ -256,8 +254,7 @@
                     android:fontFamily="@font/ml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="API 21 - API 28
-"/>
+                    android:text="API 21 - API 29"/>
 
             </LinearLayout>
 
