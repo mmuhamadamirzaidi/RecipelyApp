@@ -7,7 +7,7 @@
     android:id="@+id/swipe_layout_category"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="@color/backgroundApp"
-    tools:context=".Modules.CategoryActivity">
+    tools:context=".Modules.Category.CategoryActivity">
 
     <LinearLayout
         android:orientation="vertical"
