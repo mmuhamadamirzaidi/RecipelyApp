@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.mmuhamadamirzaidi.recipelyapp.Common.Common;
 import com.mmuhamadamirzaidi.recipelyapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.recipelyapp.Model.Category;
-import com.mmuhamadamirzaidi.recipelyapp.Modules.RecipeActivity;
+import com.mmuhamadamirzaidi.recipelyapp.Modules.Recipe.RecipeActivity;
 import com.mmuhamadamirzaidi.recipelyapp.R;
 import com.mmuhamadamirzaidi.recipelyapp.ViewHolder.CategoryViewHolder;
 import com.squareup.picasso.Picasso;

@@ -1,4 +1,4 @@
-package com.mmuhamadamirzaidi.recipelyapp.Modules;
+package com.mmuhamadamirzaidi.recipelyapp.Modules.Recipe;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -27,6 +27,8 @@ import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.mmuhamadamirzaidi.recipelyapp.Common.Common;
 import com.mmuhamadamirzaidi.recipelyapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.recipelyapp.Model.Recipe;
+import com.mmuhamadamirzaidi.recipelyapp.Modules.Category.AddCategoryActivity;
+import com.mmuhamadamirzaidi.recipelyapp.Modules.Category.CategoryActivity;
 import com.mmuhamadamirzaidi.recipelyapp.R;
 import com.mmuhamadamirzaidi.recipelyapp.SQLite.Database;
 import com.mmuhamadamirzaidi.recipelyapp.ViewHolder.RecipeViewHolder;
@@ -68,7 +70,7 @@ public class RecipeActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         recipe = database.getReference("Recipe");
 
-        // Local bookmark database
+        // Local Bookmark Database
         bookmarkDB = new Database(this);
 
         // Init Resources
@@ -77,7 +79,9 @@ public class RecipeActivity extends AppCompatActivity {
         recipe_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Add later
+                Intent menuIntent = new Intent(RecipeActivity.this, AddRecipeActivity.class);
+                menuIntent.putExtra("categoryId", categoryId);
+                startActivity(menuIntent);
             }
         });
 

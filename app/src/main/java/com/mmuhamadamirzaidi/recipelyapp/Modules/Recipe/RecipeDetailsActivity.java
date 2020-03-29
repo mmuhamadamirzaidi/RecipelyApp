@@ -1,11 +1,8 @@
-package com.mmuhamadamirzaidi.recipelyapp.Modules;
+package com.mmuhamadamirzaidi.recipelyapp.Modules.Recipe;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +15,6 @@ import com.mmuhamadamirzaidi.recipelyapp.Common.Common;
 import com.mmuhamadamirzaidi.recipelyapp.Model.Recipe;
 import com.mmuhamadamirzaidi.recipelyapp.R;
 import com.squareup.picasso.Picasso;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class RecipeDetailsActivity extends AppCompatActivity {
 

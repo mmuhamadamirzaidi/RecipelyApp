@@ -7,13 +7,13 @@
     tools:context=".Modules.Category.AddCategoryActivity">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/edit_profile_app_bar_layout"
+        android:id="@+id/add_category_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/edit_profile_toolbar"
+            android:id="@+id/add_category_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
@@ -22,7 +22,6 @@
             app:titleTextColor="@color/white">
 
             <TextView
-                android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -45,7 +44,7 @@
 
     <ScrollView
         android:scrollbars="none"
-        android:layout_below="@+id/edit_profile_app_bar_layout"
+        android:layout_below="@+id/add_category_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 

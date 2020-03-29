@@ -12,11 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Modules.Category.AddCategoryActivity"></activity>
+        <activity android:name=".Modules.Recipe.AddRecipeActivity"></activity>
+        <activity android:name=".Modules.Category.AddCategoryActivity" />
         <activity android:name=".Modules.AboutActivity" />
         <activity android:name=".Modules.BookmarkActivity" />
-        <activity android:name=".Modules.RecipeDetailsActivity" />
-        <activity android:name=".Modules.RecipeActivity" />
+        <activity android:name=".Modules.Recipe.RecipeDetailsActivity" />
+        <activity android:name=".Modules.Recipe.RecipeActivity" />
         <activity android:name=".Modules.Category.CategoryActivity" />
         <activity android:name=".Modules.SplashActivity">
             <intent-filter>
