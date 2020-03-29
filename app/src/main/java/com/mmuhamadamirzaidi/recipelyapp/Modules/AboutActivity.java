@@ -1,13 +1,15 @@
-package com.mmuhamadamirzaidi.recipelyapp;
+package com.mmuhamadamirzaidi.recipelyapp.Modules;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CategoryActivity extends AppCompatActivity {
+import com.mmuhamadamirzaidi.recipelyapp.R;
+
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_about);
     }
 }

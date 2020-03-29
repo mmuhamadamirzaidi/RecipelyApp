@@ -1,7 +1,9 @@
-package com.mmuhamadamirzaidi.recipelyapp;
+package com.mmuhamadamirzaidi.recipelyapp.Modules;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.mmuhamadamirzaidi.recipelyapp.R;
 
 public class BookmarkActivity extends AppCompatActivity {
 

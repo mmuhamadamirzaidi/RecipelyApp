@@ -1,8 +1,10 @@
-package com.mmuhamadamirzaidi.recipelyapp;
+package com.mmuhamadamirzaidi.recipelyapp.Modules;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
+import com.mmuhamadamirzaidi.recipelyapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

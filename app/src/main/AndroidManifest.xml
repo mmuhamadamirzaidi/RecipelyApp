@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutActivity"></activity>
-        <activity android:name=".BookmarkActivity" />
-        <activity android:name=".RecipeDetailsActivity" />
-        <activity android:name=".RecipeActivity" />
-        <activity android:name=".CategoryActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".Modules.AboutActivity"></activity>
+        <activity android:name=".Modules.BookmarkActivity" />
+        <activity android:name=".Modules.RecipeDetailsActivity" />
+        <activity android:name=".Modules.RecipeActivity" />
+        <activity android:name=".Modules.CategoryActivity" />
+        <activity android:name=".Modules.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Modules.MainActivity" />
     </application>
 
 </manifest>
