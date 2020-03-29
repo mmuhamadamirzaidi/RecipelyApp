@@ -12,8 +12,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -63,7 +61,7 @@ public class RecipeActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         recipe = database.getReference("Recipe");
 
-        swipe_layout_recipe_list = (SwipeRefreshLayout) findViewById(R.id.swipe_layout_product_list);
+        swipe_layout_recipe_list = (SwipeRefreshLayout) findViewById(R.id.swipe_layout_recipe_list);
         swipe_layout_recipe_list.setColorSchemeResources(R.color.colorPrimaryDark);
 
         swipe_layout_recipe_list.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -76,7 +74,7 @@ public class RecipeActivity extends AppCompatActivity {
                 if (!categoryId.isEmpty() && categoryId != null) {
 
                     if (Common.isConnectedToInternet(getBaseContext())) {
-                        loadProduct(categoryId);
+                        loadRecipe(categoryId);
                     } else {
                         Toast.makeText(RecipeActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
                     }
@@ -94,7 +92,7 @@ public class RecipeActivity extends AppCompatActivity {
                 if (!categoryId.isEmpty() && categoryId != null) {
 
                     if (Common.isConnectedToInternet(getBaseContext())) {
-                        loadProduct(categoryId);
+                        loadRecipe(categoryId);
                     } else {
                         Toast.makeText(RecipeActivity.this, "Please check Internet connection!", Toast.LENGTH_SHORT).show();
                     }
@@ -102,8 +100,8 @@ public class RecipeActivity extends AppCompatActivity {
 
                 // Search
 
-                recipe_list_search_bar = (MaterialSearchBar) findViewById(R.id.product_list_search_bar);
-                recipe_list_search_bar.setHint("Search the products...");
+                recipe_list_search_bar = (MaterialSearchBar) findViewById(R.id.recipe_list_search_bar);
+                recipe_list_search_bar.setHint("Search the recipes...");
 
                 loadSuggestion();
 
@@ -154,7 +152,7 @@ public class RecipeActivity extends AppCompatActivity {
         });
 
         // Load category
-        recycler_recipe = (RecyclerView) findViewById(R.id.recycler_product);
+        recycler_recipe = (RecyclerView) findViewById(R.id.recycler_recipe);
         layoutManager = new LinearLayoutManager(this);
         recycler_recipe.setLayoutManager(layoutManager);
     }
@@ -164,11 +162,11 @@ public class RecipeActivity extends AppCompatActivity {
         //Create query by name
         Query searchByName = recipe.orderByChild("recipeName").equalTo(text.toString().trim());
 
-        FirebaseRecyclerOptions<Recipe> productOptions = new FirebaseRecyclerOptions.Builder<Recipe>()
+        FirebaseRecyclerOptions<Recipe> recipeOptions = new FirebaseRecyclerOptions.Builder<Recipe>()
                 .setQuery(searchByName, Recipe.class)
                 .build();
 
-        searchAdapter = new FirebaseRecyclerAdapter<Recipe, RecipeViewHolder>(productOptions) {
+        searchAdapter = new FirebaseRecyclerAdapter<Recipe, RecipeViewHolder>(recipeOptions) {
             @Override
             protected void onBindViewHolder(@NonNull RecipeViewHolder viewHolder, int position, @NonNull Recipe model) {
 
@@ -223,15 +221,15 @@ public class RecipeActivity extends AppCompatActivity {
         });
     }
 
-    private void loadProduct(String categoryId) {
+    private void loadRecipe(String categoryId) {
 
         Query searchByName = recipe.orderByChild("categoryId").equalTo(categoryId);
 
-        FirebaseRecyclerOptions<Recipe> productOptions = new FirebaseRecyclerOptions.Builder<Recipe>()
+        FirebaseRecyclerOptions<Recipe> recipeOptions = new FirebaseRecyclerOptions.Builder<Recipe>()
                 .setQuery(searchByName, Recipe.class)
                 .build();
 
-        adapter = new FirebaseRecyclerAdapter<Recipe, RecipeViewHolder>(productOptions) {
+        adapter = new FirebaseRecyclerAdapter<Recipe, RecipeViewHolder>(recipeOptions) {
             @Override
             protected void onBindViewHolder(@NonNull final RecipeViewHolder viewHolder, final int position, @NonNull final Recipe model) {
 
@@ -246,9 +244,9 @@ public class RecipeActivity extends AppCompatActivity {
 
                         Toast.makeText(RecipeActivity.this, "Recipe Name: " + clickItem.getRecipeName(), Toast.LENGTH_SHORT).show();
 
-                        Intent product_detail = new Intent(RecipeActivity.this, RecipeDetailsActivity.class);
-                        product_detail.putExtra("productId", adapter.getRef(position).getKey());
-                        startActivity(product_detail);
+                        Intent recipe_detail = new Intent(RecipeActivity.this, RecipeDetailsActivity.class);
+                        recipe_detail.putExtra("recipeId", adapter.getRef(position).getKey());
+                        startActivity(recipe_detail);
                     }
                 });
             }

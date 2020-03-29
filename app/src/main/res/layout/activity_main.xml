@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -14,49 +13,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <LinearLayout-->
-<!--        android:layout_marginTop="26dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:id="@+id/main_header"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:weightSum="4"-->
-<!--        android:layout_gravity="center">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/cart_scdcub_to"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="start"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:src="@drawable/ic_chevron_left_primary_dark_24dp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/cart_sub_ththto"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="2"-->
-<!--            android:gravity="center"-->
-<!--            android:text="Main"-->
-<!--            android:fontFamily="@font/mm"-->
-<!--            android:textColor="@color/colorPrimary"-->
-<!--            android:textSize="20sp" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/cart_subdd_to"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="end"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:src="@drawable/ic_more_vert_primary_dark_24dp" />-->
-
-<!--    </LinearLayout>-->
 
     <ImageView
         android:id="@+id/main_logo_image"

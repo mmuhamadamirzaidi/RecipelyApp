@@ -50,19 +50,6 @@ public class CategoryActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         category = database.getReference("Category");
 
-        // Init Resources
-        category_back = findViewById(R.id.category_back);
-        category_add = findViewById(R.id.category_add);
-
-        category_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent categoryIntent = new Intent(CategoryActivity.this, AddCategoryActivity.class);
-//                startActivity(categoryIntent);
-                Toast.makeText(CategoryActivity.this, "Add Category Button", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         swipe_layout_category.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

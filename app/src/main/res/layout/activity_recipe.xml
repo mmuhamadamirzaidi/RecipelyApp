@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/swipe_layout_product_list"
+    android:id="@+id/swipe_layout_recipe_list"
     android:background="@color/backgroundApp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -13,48 +13,55 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:id="@+id/main_header"
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <ImageView
-                android:id="@+id/category_back"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/recipe_detail_toolbar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_chevron_left_primary_dark_24dp" />
+                android:background="@color/colorPrimary"
+                android:theme="@style/ToolbarTheme"
+                app:titleTextColor="@color/white"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <TextView
-                android:id="@+id/category_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:text="Recipe"
-                android:fontFamily="@font/mm"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
+                <ImageView
+                    android:id="@+id/recipe_back"
+                    android:layout_marginStart="16dp"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_back_white_24dp"
+                    />
 
-            <ImageView
-                android:id="@+id/category_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_more_vert_primary_dark_24dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="Recipe List"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:theme="@style/ToolbarTheme"
+                    android:id="@+id/toolbar_title" />
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/recipe_add"
+                    android:layout_marginEnd="16dp"
+                    android:layout_gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_white_24dp"
+                    />
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
 
         <com.mancj.materialsearchbar.MaterialSearchBar
-            android:layout_marginTop="24dp"
-            android:id="@+id/product_list_search_bar"
+            android:id="@+id/recipe_list_search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:mt_hint="Custom hint"
@@ -62,12 +69,12 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_below="@id/product_list_search_bar"
+            android:layout_below="@id/recipe_list_search_bar"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_product"
+                android:id="@+id/recycler_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

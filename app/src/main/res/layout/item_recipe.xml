@@ -48,6 +48,15 @@
                     android:layout_height="wrap_content"
                     android:text="Recipe Name"/>
 
+                <ImageView
+                    android:id="@+id/recipe_bookmark"
+                    android:paddingLeft="10dp"
+                    android:tint="@color/colorPrimaryDark"
+                    android:src="@drawable/ic_bookmark_border_primary_dark_24dp"
+                    android:layout_weight="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
 
         </LinearLayout>

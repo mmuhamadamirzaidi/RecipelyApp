@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MyToolbarThemeSimple.Base" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:theme">@style/ToolbarTheme</item>
+    </style>
+
+    <style name="ToolbarTheme">
+
+        <item name="android:fontFamily">@font/mm</item>
+        <item name="android:textColor">@color/white</item>
+
+        <!-- Used to for the title of the toolbar -->
+        <item name="android:textColorPrimary">@color/white</item>
+        <!-- Used to color back button and overflow menu dots -->
+        <item name="android:textColorSecondary">@color/white</item>
+
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
 </resources>
