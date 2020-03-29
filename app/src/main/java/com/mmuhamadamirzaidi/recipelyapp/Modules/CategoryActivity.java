@@ -114,11 +114,11 @@ public class CategoryActivity extends AppCompatActivity {
                     public void onClick(View view, int position, boolean isLongClick) {
 
                         // Get CategoryId and send to new activity
-//                        Intent product_id = new Intent(CategoryActivity.this, RecipeDetailsActivity.class);
-//                        product_id.putExtra("categoryId", adapter.getRef(position).getKey());
-//                        startActivity(product_id);
+                        Intent product_id = new Intent(CategoryActivity.this, RecipeActivity.class);
+                        product_id.putExtra("categoryId", adapter.getRef(position).getKey());
+                        startActivity(product_id);
 
-                        Toast.makeText(CategoryActivity.this, "Key: "+adapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(CategoryActivity.this, "Key: "+adapter.getRef(position).getKey(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
