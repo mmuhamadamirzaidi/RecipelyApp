@@ -11,7 +11,7 @@ import com.mmuhamadamirzaidi.recipelyapp.R;
 
 public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    public ImageView recipe_image;
+    public ImageView recipe_image, recipe_bookmark;
     public TextView recipe_name;
 
     private ItemClickListener itemClickListener;
@@ -24,6 +24,7 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.On
         super(itemView);
 
         recipe_image = (ImageView) itemView.findViewById(R.id.recipe_image);
+        recipe_bookmark = (ImageView) itemView.findViewById(R.id.recipe_bookmark);
 
         recipe_name = (TextView) itemView.findViewById(R.id.recipe_name);
 

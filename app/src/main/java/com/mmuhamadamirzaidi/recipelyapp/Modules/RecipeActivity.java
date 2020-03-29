@@ -27,6 +27,7 @@ import com.mmuhamadamirzaidi.recipelyapp.Common.Common;
 import com.mmuhamadamirzaidi.recipelyapp.Interface.ItemClickListener;
 import com.mmuhamadamirzaidi.recipelyapp.Model.Recipe;
 import com.mmuhamadamirzaidi.recipelyapp.R;
+import com.mmuhamadamirzaidi.recipelyapp.SQLite.Database;
 import com.mmuhamadamirzaidi.recipelyapp.ViewHolder.RecipeViewHolder;
 import com.squareup.picasso.Picasso;
 
@@ -52,6 +53,9 @@ public class RecipeActivity extends AppCompatActivity {
 
     SwipeRefreshLayout swipe_layout_recipe_list;
 
+    // Bookmark
+    Database bookmarkDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +64,9 @@ public class RecipeActivity extends AppCompatActivity {
         // Init Firebase
         database = FirebaseDatabase.getInstance();
         recipe = database.getReference("Recipe");
+
+        // Local bookmark database
+        bookmarkDB = new Database(this);
 
         swipe_layout_recipe_list = (SwipeRefreshLayout) findViewById(R.id.swipe_layout_recipe_list);
         swipe_layout_recipe_list.setColorSchemeResources(R.color.colorPrimaryDark);
@@ -236,6 +243,26 @@ public class RecipeActivity extends AppCompatActivity {
                 viewHolder.recipe_name.setText(model.getRecipeName());
 
                 Picasso.with(getBaseContext()).load(model.getRecipeImage()).into(viewHolder.recipe_image);
+
+                //Add bookmark
+                if (bookmarkDB.currentBookmark(adapter.getRef(position).getKey()))
+                    viewHolder.recipe_bookmark.setImageResource(R.drawable.ic_bookmark_primary_dark_24dp);
+
+                //Remove bookmark
+                viewHolder.recipe_bookmark.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!bookmarkDB.currentBookmark(adapter.getRef(position).getKey())) {
+                            bookmarkDB.addToBookmark(adapter.getRef(position).getKey());
+                            viewHolder.recipe_bookmark.setImageResource(R.drawable.ic_bookmark_primary_dark_24dp);
+                            Toast.makeText(RecipeActivity.this, model.getRecipeName() + " added to bookmark!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            bookmarkDB.clearBookmark(adapter.getRef(position).getKey());
+                            viewHolder.recipe_bookmark.setImageResource(R.drawable.ic_bookmark_border_primary_dark_24dp);
+                            Toast.makeText(RecipeActivity.this, model.getRecipeName() + " removed from bookmark!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
                 final Recipe clickItem = model;
                 viewHolder.setItemClickListener(new ItemClickListener() {
