@@ -107,7 +107,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         if (saveUri != null){
 
             String imageName = UUID.randomUUID().toString();
-            final StorageReference imageFolder = storageReference.child("products/"+imageName);
+            final StorageReference imageFolder = storageReference.child("recipes/"+imageName);
 
             if (add_recipe_name_ongoing.length() > 0) {
                 imageFolder.putFile(saveUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
