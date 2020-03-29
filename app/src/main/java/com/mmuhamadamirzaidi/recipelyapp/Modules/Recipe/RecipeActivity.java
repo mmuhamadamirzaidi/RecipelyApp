@@ -192,7 +192,27 @@ public class RecipeActivity extends AppCompatActivity {
 
         searchAdapter = new FirebaseRecyclerAdapter<Recipe, RecipeViewHolder>(recipeOptions) {
             @Override
-            protected void onBindViewHolder(@NonNull RecipeViewHolder viewHolder, int position, @NonNull Recipe model) {
+            protected void onBindViewHolder(@NonNull final RecipeViewHolder viewHolder, final int position, @NonNull final Recipe model) {
+
+                //Add bookmark
+                if (bookmarkDB.currentBookmark(adapter.getRef(position).getKey()))
+                    viewHolder.recipe_bookmark.setImageResource(R.drawable.ic_bookmark_primary_dark_24dp);
+
+                //Remove bookmark
+                viewHolder.recipe_bookmark.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!bookmarkDB.currentBookmark(adapter.getRef(position).getKey())) {
+                            bookmarkDB.addToBookmark(adapter.getRef(position).getKey());
+                            viewHolder.recipe_bookmark.setImageResource(R.drawable.ic_bookmark_primary_dark_24dp);
+                            Toast.makeText(RecipeActivity.this, model.getRecipeName() + " added to bookmark!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            bookmarkDB.clearBookmark(adapter.getRef(position).getKey());
+                            viewHolder.recipe_bookmark.setImageResource(R.drawable.ic_bookmark_border_primary_dark_24dp);
+                            Toast.makeText(RecipeActivity.this, model.getRecipeName() + " removed from bookmark!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
                 viewHolder.recipe_name.setText(model.getRecipeName());
 
