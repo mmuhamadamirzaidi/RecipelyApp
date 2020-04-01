@@ -1,6 +1,6 @@
 package com.mmuhamadamirzaidi.recipelyapp.Modules.Recipe;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,7 +70,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 currentRecipe = dataSnapshot.getValue(Recipe.class);
 
                 // Set image
-                Picasso.with(getBaseContext()).load(currentRecipe.getRecipeImage()).into(recipe_details_image);
+                Picasso.get().load(currentRecipe.getRecipeImage()).into(recipe_details_image);
 
                 recipe_details_name.setText(currentRecipe.getRecipeName());
                 recipe_details_id.setText(recipeId);

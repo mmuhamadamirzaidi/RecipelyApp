@@ -88,7 +88,7 @@
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="15sp" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="false">
@@ -106,7 +106,7 @@
                         android:textColorHint="@color/textColorAccent"
                         android:textSize="15sp" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -126,7 +126,7 @@
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="15sp" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="false">
@@ -144,7 +144,7 @@
                         android:textColorHint="@color/textColorAccent"
                         android:textSize="15sp" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -164,7 +164,7 @@
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="15sp" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="false">
@@ -182,7 +182,7 @@
                         android:textColorHint="@color/textColorAccent"
                         android:textSize="15sp" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -202,7 +202,7 @@
                     android:textColor="@color/textColorPrimaryDark"
                     android:textSize="15sp" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="false">
@@ -220,7 +220,7 @@
                         android:textColorHint="@color/textColorAccent"
                         android:textSize="15sp" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 

@@ -5,21 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Modules.Recipe.AddRecipeActivity"
-    android:id="@+id/activity_add_product">
+    android:id="@+id/activity_add_product"
+    android:background="@color/backgroundApp">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/add_recipe_app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="wrap_content">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/edit_profile_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:theme="@style/ToolbarTheme"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleTextColor="@color/white">
 
             <TextView
@@ -39,9 +38,9 @@
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_save_white_24dp" />
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:scrollbars="none"
@@ -108,7 +107,7 @@
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="15sp" />
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hintEnabled="false">
@@ -126,7 +125,7 @@
                             android:textColorHint="@color/textColorAccent"
                             android:textSize="15sp" />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -153,7 +152,7 @@
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="15sp" />
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hintEnabled="false">
@@ -171,7 +170,7 @@
                             android:textColorHint="@color/textColorAccent"
                             android:textSize="15sp" />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -198,7 +197,7 @@
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="15sp" />
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hintEnabled="false">
@@ -216,7 +215,7 @@
                             android:textColorHint="@color/textColorAccent"
                             android:textSize="15sp" />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -243,7 +242,7 @@
                         android:textColor="@color/textColorPrimaryDark"
                         android:textSize="15sp" />
 
-                    <android.support.design.widget.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:hintEnabled="false">
@@ -261,7 +260,7 @@
                             android:textColorHint="@color/textColorAccent"
                             android:textSize="15sp" />
 
-                    </android.support.design.widget.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
