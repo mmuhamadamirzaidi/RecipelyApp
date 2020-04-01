@@ -206,12 +206,12 @@
                         <EditText
                             android:id="@+id/add_recipe_ingredients"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_marginStart="13dp"
                             android:layout_marginEnd="13dp"
                             android:fontFamily="@font/mr"
                             android:hint="Recipe Ingredients"
-                            android:inputType="text"
+                            android:inputType="textMultiLine"
                             android:textColor="@color/textColorPrimary"
                             android:textColorHint="@color/textColorAccent"
                             android:textSize="15sp" />
@@ -251,12 +251,12 @@
                         <EditText
                             android:id="@+id/add_recipe_steps"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_marginStart="13dp"
                             android:layout_marginEnd="13dp"
                             android:fontFamily="@font/mr"
                             android:hint="Recipe Steps"
-                            android:inputType="text"
+                            android:inputType="textMultiLine"
                             android:textColor="@color/textColorPrimary"
                             android:textColorHint="@color/textColorAccent"
                             android:textSize="15sp" />
